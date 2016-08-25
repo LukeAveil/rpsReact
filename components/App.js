@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList'
+import { connect } from 'react-redux'
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <h1>To do list</h1>
-        <TodoInput/>
-        <TodoList/>
+        <h1>Todo list</h1>
+        <TodoInput dispatch={this.props.dispatch}/>
+        <TodoList todos={this.props.todos}/>
       </div>
     )
   }
 
 }
 
-export default App
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(App)
